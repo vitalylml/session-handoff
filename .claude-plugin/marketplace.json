@@ -1,0 +1,13 @@
+{
+  "name": "session-handoff",
+  "owner": {
+    "name": "session-handoff maintainers"
+  },
+  "plugins": [
+    {
+      "name": "session-handoff",
+      "source": "./",
+      "description": "Start, save, resume and list handoff sessions stored as Markdown files."
+    }
+  ]
+}
