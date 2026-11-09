@@ -3,7 +3,7 @@
 # Usage: sh install.sh [--uninstall]
 set -eu
 
-skills="start-session save-session resume-session list-sessions"
+skills="start-session save-session resume-session list-sessions remove-session"
 source_dir="$(cd "$(dirname "$0")" && pwd)/skills"
 target="$HOME/.claude/skills"
 sessions_home="${SESSIONS_HOME:-$HOME/.sessions}"
@@ -25,4 +25,4 @@ done
 
 mkdir -p "$sessions_home"
 echo "Global sessions folder: $sessions_home"
-echo "Start a new Claude Code session to use /start-session, /save-session, /resume-session and /list-sessions."
+echo "Start a new Claude Code session to use /start-session, /save-session, /resume-session, /list-sessions and /remove-session."

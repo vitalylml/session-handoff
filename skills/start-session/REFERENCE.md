@@ -1,6 +1,6 @@
 # Session handoff reference
 
-Shared rules for `/start-session`, `/save-session`, `/resume-session` and `/list-sessions`.
+Shared rules for `/start-session`, `/save-session`, `/resume-session`, `/list-sessions` and `/remove-session`.
 
 ## Storage resolution
 
@@ -28,6 +28,7 @@ Storage mode argument:
 | `PLAN.md` | Work items with status (todo, in progress, done, dropped) and dependencies |
 | `TASKS.md` | Open tasks only |
 | `QUESTIONS.md` | Open questions only |
+| `SECURITY.md` | Security rules and permissions, such as which repositories the agent may access |
 | `<root>/INDEX.md` | One line per session: name, status, last update, summary |
 | `<root>/_shared/` | Facts used by several sessions, such as constraints and a glossary |
 

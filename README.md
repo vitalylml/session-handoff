@@ -12,6 +12,7 @@ It provides four Claude Code commands and a set of templates. Other agents can u
 | `/save-session [name] [local\|global[:group]]` | Updates the session files with the current state. The default storage is `local`. |
 | `/resume-session <name\|path>` | Finds a session (path, local, then global), checks the recorded state against the repositories, and summarizes it. |
 | `/list-sessions [local\|global]` | Lists local and global sessions. |
+| `/remove-session [name]` | Removes a session after confirmation. Without a name, removes the current session. |
 
 ## Storage
 
@@ -37,6 +38,7 @@ _shared/
   PLAN.md                work items with status and dependencies
   TASKS.md               open tasks only
   QUESTIONS.md           open questions only
+  SECURITY.md            security rules and permissions
 ```
 
 Rules are in [skills/start-session/REFERENCE.md](skills/start-session/REFERENCE.md).
@@ -104,9 +106,10 @@ skills/
   save-session/SKILL.md
   resume-session/SKILL.md
   list-sessions/SKILL.md
+  remove-session/SKILL.md
 .claude-plugin/          plugin and marketplace manifests
 install.ps1, install.sh
 AGENTS.md.snippet
 ```
 
-The skills refer to each other through `../start-session/`, so install all four together.
+The skills refer to each other through `../start-session/`, so install all five together.

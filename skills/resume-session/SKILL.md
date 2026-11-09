@@ -22,7 +22,7 @@ Check in this order (see "Storage resolution" in [REFERENCE.md](../start-session
 
 ## 2. Read
 
-Read `HANDOFF.md`, `PLAN.md`, `TASKS.md`, `QUESTIONS.md`, and `../_shared/*` if present.
+Read `HANDOFF.md`, `PLAN.md`, `TASKS.md`, `QUESTIONS.md`, `SECURITY.md`, and `../_shared/*` if present. Follow the rules in `SECURITY.md` for the rest of the session.
 
 ## 3. Verify
 

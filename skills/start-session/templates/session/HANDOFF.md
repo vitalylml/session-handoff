@@ -39,3 +39,4 @@ None yet.
 - Plan: [PLAN.md](PLAN.md)
 - Open tasks: [TASKS.md](TASKS.md)
 - Open questions: [QUESTIONS.md](QUESTIONS.md)
+- Security and permissions: [SECURITY.md](SECURITY.md)

@@ -22,7 +22,7 @@ If `<session folder>/HANDOFF.md` already exists, stop. Tell the user the session
 ## 3. Create the files
 
 - Create the root `INDEX.md` and `_shared/` from [templates](templates/) if they are missing. Never overwrite existing ones.
-- Create the session folder with `HANDOFF.md`, `PLAN.md`, `TASKS.md` and `QUESTIONS.md` from [templates/session](templates/session/).
+- Create the session folder with `HANDOFF.md`, `PLAN.md`, `TASKS.md`, `QUESTIONS.md` and `SECURITY.md` from [templates/session](templates/session/).
 - Replace the placeholders: `{{name}}`, `{{date}}` (today, ISO), `{{mode}}`, `{{repos}}`.
 
 ## 4. Fill from the conversation
