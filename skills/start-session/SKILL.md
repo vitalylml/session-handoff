@@ -24,6 +24,7 @@ If `<session folder>/HANDOFF.md` already exists, stop. Tell the user the session
 - Create the root `INDEX.md` and `_shared/` from [templates](templates/) if they are missing. Never overwrite existing ones.
 - Create the session folder with `HANDOFF.md`, `PLAN.md`, `TASKS.md`, `QUESTIONS.md` and `SECURITY.md` from [templates/session](templates/session/).
 - Replace the placeholders: `{{name}}`, `{{date}}` (today, ISO), `{{mode}}`, `{{repos}}`.
+- `{{repos}}`: one row for the repository the agent was started in, if it is a Git repository; otherwise leave the table empty. Do not add other repositories; the user adds them with `/add-repository`. The agent already loaded this repository's agent files at startup.
 
 ## 4. Fill from the conversation
 
@@ -33,4 +34,4 @@ If the conversation already contains work, fill the files now, following "Conten
 
 - Add one line for this session to the root `INDEX.md`.
 - Remember the session name, mode and folder for the rest of the conversation, so `/save-session` can reuse them.
-- Report the folder path and the files written. Do not commit.
+- Report the folder path and the files written. Suggest `/add-repository <path>` for other repositories the work needs. Do not commit.

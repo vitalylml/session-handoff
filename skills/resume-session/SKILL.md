@@ -31,12 +31,17 @@ The files may have been copied from another location or machine. Treat recorded 
 - Check each recorded repository: does the path exist, is the branch the same, is the last commit the same, are the uncommitted files the same?
 - Report every difference. Do not change branches or files to match the record.
 
+## 3a. Read the repositories' agent files
+
+The agent loaded agent files only from the folder it was started in. For every other repository in the Current state table that exists, read its agent files as in "Agent files" in [REFERENCE.md](../start-session/REFERENCE.md), and follow them for work in that repository. This is needed after every agent restart.
+
 ## 4. Summarize
 
 Tell the user:
 
 - Goal and status.
 - Current state, with the differences found.
+- The agent files read from each repository.
 - The next open tasks from `TASKS.md`.
 - The open questions from `QUESTIONS.md`.
 

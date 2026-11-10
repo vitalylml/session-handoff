@@ -2,17 +2,18 @@
 
 A small framework that keeps the state of agent work in Markdown files, so that any agent, on any machine, can resume it later.
 
-It provides four Claude Code commands and a set of templates. Other agents can use the same files by following [AGENTS.md.snippet](AGENTS.md.snippet).
+It provides six Claude Code commands and a set of templates. Other agents can use the same files by following [AGENTS.md.snippet](AGENTS.md.snippet).
 
 ## Commands
 
 | Command | What it does |
 |---|---|
-| `/start-session <name> [local\|global[:group]]` | Creates a session from the templates and fills it from the conversation so far. Never overwrites an existing session. |
+| `/start-session <name> [local\|global[:group]]` | Creates a session from the templates with the repository it was started in, and fills it from the conversation so far. Never overwrites an existing session. |
 | `/save-session [name] [local\|global[:group]]` | Updates the session files with the current state. The default storage is `local`. |
-| `/resume-session <name\|path>` | Finds a session (path, local, then global), checks the recorded state against the repositories, and summarizes it. |
+| `/resume-session <name\|path>` | Finds a session (path, local, then global), checks the recorded state against the repositories, reads the agent files of every listed repository, and summarizes it. |
 | `/list-sessions [local\|global]` | Lists local and global sessions. |
 | `/remove-session [name]` | Removes a session after confirmation. Without a name, removes the current session. |
+| `/add-repository <path> [name]` | Adds a repository to the session (Current state in `HANDOFF.md`) and reads its agent files. |
 
 ## Storage
 
@@ -23,7 +24,7 @@ It provides four Claude Code commands and a set of templates. Other agents can u
 | `global:<group>` | `<sessions home>/<group>/<session>/` |
 
 - `<sessions home>` is `SESSIONS_HOME` if set, otherwise `~/.sessions` (`C:\Users\<user>\.sessions` on Windows).
-- Use `global:<group>` for work that spans several repositories.
+- Use `global:<group>` for work that spans several repositories, and add each repository with `/add-repository`.
 - For local sessions, either commit `.sessions/` to share them, or add it to `.gitignore` to keep them private.
 
 Each storage root holds:
@@ -84,6 +85,7 @@ Copy [AGENTS.md.snippet](AGENTS.md.snippet) into the repository's `AGENTS.md` or
 
 ```text
 /start-session eve-evaluation global:eve
+/add-repository C:/Repos/other-repo
 ... work ...
 /save-session
 ```
@@ -94,6 +96,11 @@ Later, in any repository or on another machine where the files were copied:
 /resume-session eve-evaluation
 /resume-session D:/backup/sessions/eve/eve-evaluation
 ```
+
+## Known issues
+
+- **Multi-repository projects:** an agent loads agent files (for Claude Code: `CLAUDE.md`, `.claude/`) only from the repository it was started in. This framework makes the agent read the agent files of every repository in the session as text instructions, but only when `/add-repository` or `/resume-session` runs. Run `/resume-session` again every time the agent is restarted.
+- **Settings are not loaded:** for repositories other than the start folder, only instructions are read. Their settings, permissions and hooks (for example `.claude/settings.json`) do not apply.
 
 ## Layout of this repository
 
@@ -107,9 +114,10 @@ skills/
   resume-session/SKILL.md
   list-sessions/SKILL.md
   remove-session/SKILL.md
+  add-repository/SKILL.md
 .claude-plugin/          plugin and marketplace manifests
 install.ps1, install.sh
 AGENTS.md.snippet
 ```
 
-The skills refer to each other through `../start-session/`, so install all five together.
+The skills refer to each other through `../start-session/`, so install all six together.

@@ -6,7 +6,7 @@ Rules for any agent or person working on this session.
 
 - The agent working on this session may read, write and execute files in every repository listed in the Current state table of [HANDOFF.md](HANDOFF.md).
 - This access covers only those repositories. Do not read, change or run anything in other repositories without asking the user.
-- To work in a new repository, ask the user first, then add it to the Current state table.
+- To work in a new repository, ask the user first, then add it with `/add-repository` (or add a row to the Current state table).
 
 ## Limits
 

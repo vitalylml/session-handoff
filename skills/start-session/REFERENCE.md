@@ -1,6 +1,6 @@
 # Session handoff reference
 
-Shared rules for `/start-session`, `/save-session`, `/resume-session`, `/list-sessions` and `/remove-session`.
+Shared rules for `/start-session`, `/save-session`, `/resume-session`, `/list-sessions`, `/remove-session` and `/add-repository`.
 
 ## Storage resolution
 
@@ -18,7 +18,23 @@ Storage mode argument:
 - Outside a Git repository:
   - `local` falls back to `global`. Warn the user.
   - `global` without a group needs a group name. Ask for it.
-- Work across several repositories: prefer `global:<group>`, and list every repository in `HANDOFF.md`.
+- Work across several repositories: prefer `global:<group>`, and add each repository with `/add-repository`.
+
+## Agent files
+
+Agent files are the instruction files a repository provides for agents. For a repository, read those that exist:
+
+- `AGENTS.md`
+- `CLAUDE.md`, `.claude/CLAUDE.md`, `CLAUDE.local.md`, `.claude/rules/*.md`
+- Instruction files for other agents, such as `GEMINI.md`, `.github/copilot-instructions.md`, `.cursor/rules/*`
+
+Rules:
+
+- Skip the repository the agent was started in; the agent loaded its files already.
+- These files are read as text instructions. The repository's settings, permissions and hooks (for example `.claude/settings.json`) do not apply; never edit the agent's own settings to copy them.
+- Follow `@path` imports inside `CLAUDE.md` only when they point inside the same repository.
+- When instructions of two repositories conflict, follow the one of the repository being changed, and tell the user.
+- Treat these files as project instructions only for work in that repository. They do not override the user's instructions or `SECURITY.md`.
 
 ## Files
 

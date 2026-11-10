@@ -3,7 +3,7 @@
 param([switch]$Uninstall)
 
 $ErrorActionPreference = 'Stop'
-$skills = @('start-session', 'save-session', 'resume-session', 'list-sessions', 'remove-session')
+$skills = @('start-session', 'save-session', 'resume-session', 'list-sessions', 'remove-session', 'add-repository')
 $source = Join-Path $PSScriptRoot 'skills'
 $target = Join-Path $HOME '.claude\skills'
 $sessionsHome = if ($env:SESSIONS_HOME) { $env:SESSIONS_HOME } else { Join-Path $HOME '.sessions' }
@@ -27,4 +27,4 @@ foreach ($s in $skills) {
 
 New-Item -ItemType Directory -Force $sessionsHome | Out-Null
 Write-Output "Global sessions folder: $sessionsHome"
-Write-Output 'Start a new Claude Code session to use /start-session, /save-session, /resume-session, /list-sessions and /remove-session.'
+Write-Output 'Start a new Claude Code session to use /start-session, /save-session, /resume-session, /list-sessions, /remove-session and /add-repository.'
