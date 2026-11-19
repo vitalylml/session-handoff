@@ -18,6 +18,7 @@ Use the current session, or locate the named one as in step 1 of [resume-session
 ## 2. Check the repository
 
 - Resolve the path to the repository root with `git -C <path> rev-parse --show-toplevel`. If the path does not exist or is not a Git repository, stop and tell the user.
+- If the path is the session folder or its storage root, stop: it is always accessible and is never added (see `SECURITY.md`).
 - If the repository is already in the Current state table of `HANDOFF.md`, tell the user and go to step 4 only.
 
 ## 3. Add it to HANDOFF.md

@@ -58,4 +58,5 @@ Rules:
 - Put facts that apply to several sessions in `_shared/` and link to them instead of copying.
 - Never write secrets, tokens, passwords or personal data.
 - Use absolute paths only where needed; the files may be copied to another machine.
+- The session folder and its storage root (`INDEX.md`, `_shared/`) are always accessible to the agent, local or global. Never list them in the Current state table.
 - Never commit or push unless the user asks.
